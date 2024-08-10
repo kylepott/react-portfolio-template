@@ -155,11 +155,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             
             {mounted && theme && data.darkMode && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "light" ? "sun.svg" : "moon.svg"}`}
+                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
                 ></img>
               </Button>
             )}
