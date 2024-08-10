@@ -13,7 +13,7 @@ const Footer = ({}) => {
         </div>
       </div>
       <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
-      Decise was founded in 2022 in Chicago, Illinois ❤
+      Decise was founded in 2022 in Chicago, Illinois. ❤ Thanks for checking us out.  Now let&apos;s get to work!
       </h1>
     </>
   );
