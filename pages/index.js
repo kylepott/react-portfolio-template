@@ -77,7 +77,7 @@ export default function Home() {
             
               <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
                 {data.aboutpara}
-                <br /><br />What kind of work do we do <b>love</b> to do? What do we do <b>exceptionaly</b> well? We're glad you asked!<br />< br />
+                <br /><br />What kind of work do we do <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
              </p>
              
           </div>
