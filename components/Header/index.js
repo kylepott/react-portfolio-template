@@ -27,8 +27,15 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 onClick={() => router.push("/")}
                 className="font-medium p-2 laptop:p-0 link"
               >
-                {name}
-                {/* Replace with our logo */}
+              {mounted && (<img 
+          style={{
+            height: '30px',  // Adjust the height as needed
+            marginLeft: '10px',  // Example of adding some space to the right
+            display: 'block', 
+          }}
+          src={`/images/${theme === "light" ? "black.svg" : "white.svg"}`} alt="Logo"
+                ></img>)}
+                
               </h1>
 
               <div className="flex items-center">
@@ -126,14 +133,14 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         } dark:text-white top-0 z-10 tablet:flex`}
       >
         
-          <img 
+  {mounted && (<img 
           style={{
             height: '30px',  // Adjust the height as needed
             marginLeft: '10px',  // Example of adding some space to the right
             display: 'block', 
           }}
-          src={`/images/${theme === "light" ? "black.svg" : "white.svg"}`}
-                ></img>
+          src={`/images/${theme === "light" ? "black.svg" : "white.svg"}`} alt="Logo"
+                ></img>)}
           {/* Replace with our logo*/}
           
        
