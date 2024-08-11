@@ -8,7 +8,7 @@ const Footer = ({}) => {
     <>
       <div className="mt-5 laptop:mt-40 p-2 laptop:p-0">
         <div>
-          <h1 className="text-2xl text-bold"> How can we help? <br /><br />Let&apos;s talk about it. A real human will read your email and respond. It will probably be one of the founders of Decise, Kyle or Keela. ☺️<br /><br /><a href="mailto:hello@decise.io">hello@decise.io</a></h1>
+          <h1 className="text-2xl text-bold"> How can we help? <br /><br />Let&apos;s talk about it. A real human will read your email and respond.<br /> It will probably be one of the founders of Decise, Kyle or Keela. ☺️<br /><br /><a href="mailto:hello@decise.io">hello@decise.io</a></h1>
           <br /><br />
         </div>
       </div>
