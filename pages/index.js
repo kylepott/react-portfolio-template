@@ -78,7 +78,7 @@ export default function Home() {
               className="text-1xl tablet:text-3xl laptop:text-2xl laptopl:text-4xl p-1 tablet:p-1 text-bold w-4/5 mob:w-full laptop:w-4/5"
             ><br />
               {data.aboutpara}
-              <br /><br /><br />What kind of work do we <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
+              <br /><br />Here&apos;s the kind of work we <b>love</b> to do.
               
             </h1>
             
@@ -88,21 +88,7 @@ export default function Home() {
           
           <Socials className="mt-2 laptop:mt-5" />
         </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          
-
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-            {data.projects.map((project) => (
-              <WorkCard
-                key={project.id}
-                img={project.imageSrc}
-                name={project.title}
-                description={project.description}
-                onClick={() => window.open(project.url)}
-              />
-            ))}
-          </div>
-        </div>
+      
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           
