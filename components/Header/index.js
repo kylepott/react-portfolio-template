@@ -3,7 +3,6 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
-// Local Data
 import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
@@ -16,6 +15,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Determine the correct logo to display based on the theme
+  const logoSrc = mounted
+    ? `/images/${theme === "dark" ? "white.svg" : "black.svg"}`
+    : `/images/black.svg`; // Default to black logo before theme is determined
 
   return (
     <>
@@ -33,19 +37,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                       setTheme(theme === "dark" ? "light" : "dark")
                     }
                   >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "white.svg" : "black.svg"
-                      }`}
-                    ></img>
+                    <img className="h-6" src={logoSrc} alt="Logo" />
                   </Button>
                 )}
-             
               </h1>
 
               <div className="flex items-center">
-              
                 {data.darkMode && (
                   <Button
                     onClick={() =>
@@ -53,18 +50,14 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                     }
                   >
                     <img
-                    
                       className="h-6"
                       src={`/images/${
                         theme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
-                    ></img>
+                      alt="Theme Toggle"
+                    />
                   </Button>
                 )}
-
-                
-
-                
               </div>
             </div>
             <Popover.Panel
@@ -81,9 +74,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
                   {showResume && (
                     <Button
-                      onClick={() =>
-                        window.open("mailto:hello@decise.io")
-                      }
+                      onClick={() => window.open("mailto:hello@decise.io")}
                     >
                       Resume
                     </Button>
@@ -123,30 +114,22 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           </>
         )}
       </Popover>
-      
+
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
+        className={`mt-10 hidden flex-row items-center justify-between sticky top-0 z-10 tablet:flex`}
+        style={{
+          backgroundColor: "transparent", // Transparent background
+          width: "100%",
+          height: "60px", // Set your preferred header height
+          padding: "10px 20px", // Add padding if necessary
+        }}
       >
-      {mounted && theme && data.darkMode && (
-              <Button
-                
-              >
-                <img
-                
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "white.svg" : "black.svg"}`}
-                ></img>
-              </Button>
-            )}
-        
-          {/* Replace with our logo*/}
-          
-       
+        {mounted && theme && data.darkMode && (
+          <img className="h-6" src={logoSrc} alt="Logo" />
+        )}
+
         {!isBlog ? (
           <div className="flex">
-            
             {showBlog && (
               <Button onClick={() => router.push("/blog")}>Blog</Button>
             )}
@@ -159,8 +142,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            
-            
             {mounted && theme && data.darkMode && (
               <Button
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
@@ -168,7 +149,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 <img
                   className="h-6"
                   src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
+                  alt="Theme Toggle"
+                />
               </Button>
             )}
           </div>
@@ -186,7 +168,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 Resume
               </Button>
             )}
-
             <Button onClick={() => window.open("mailto:hello@decise.io")}>
               Contact
             </Button>
@@ -198,7 +179,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 <img
                   className="h-6"
                   src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
+                  alt="Theme Toggle"
+                />
               </Button>
             )}
           </div>
