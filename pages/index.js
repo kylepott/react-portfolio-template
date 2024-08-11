@@ -78,7 +78,7 @@ export default function Home() {
               className="text-1xl tablet:text-3xl laptop:text-2xl laptopl:text-4xl p-1 tablet:p-1 text-bold w-4/5 mob:w-full laptop:w-4/5"
             ><br />
               {data.aboutpara}
-              <br /><br /><br />What kind of work do we do <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
+              <br /><br /><br />What kind of work do we <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
               
             </h1>
             
