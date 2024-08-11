@@ -70,17 +70,21 @@ export default function Home() {
               className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
             >
               {data.headerTaglineOne}
+
+              
             </h1>
+            <h1
+              ref={textOne}
+              className="text-1xl tablet:text-3xl laptop:text-2xl laptopl:text-4xl p-1 tablet:p-1 text-bold w-4/5 mob:w-full laptop:w-4/5"
+            ><br />
+              {data.aboutpara}
+              <br /><br /><br />What kind of work do we do <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
+              
+            </h1>
+            
            
           </div>
-          <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-            
-              <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-                {data.aboutpara}
-                <br /><br />What kind of work do we do <b>love</b> to do? What do we do <b>exceptionaly</b> well? We&apos;re glad you asked!<br />< br />
-             </p>
-             
-          </div>
+          
           
           <Socials className="mt-2 laptop:mt-5" />
         </div>

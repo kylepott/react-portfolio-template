@@ -27,18 +27,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 onClick={() => router.push("/")}
                 className="font-medium p-2 laptop:p-0 link"
               >
-              {mounted && (<img 
-          style={{
-            height: '30px',  // Adjust the height as needed
-            marginLeft: '10px',  // Example of adding some space to the right
-            display: 'block', 
-          }}
-          src={`/images/${theme === "light" ? "black.svg" : "white.svg"}`} alt="Logo"
-                ></img>)}
-                
-              </h1>
-
-              <div className="flex items-center">
                 {data.darkMode && (
                   <Button
                     onClick={() =>
@@ -48,11 +36,33 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                     <img
                       className="h-6"
                       src={`/images/${
+                        theme === "dark" ? "white.svg" : "black.svg"
+                      }`}
+                    ></img>
+                  </Button>
+                )}
+             
+              </h1>
+
+              <div className="flex items-center">
+              
+                {data.darkMode && (
+                  <Button
+                    onClick={() =>
+                      setTheme(theme === "dark" ? "light" : "dark")
+                    }
+                  >
+                    <img
+                    
+                      className="h-6"
+                      src={`/images/${
                         theme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
                     ></img>
                   </Button>
                 )}
+
+                
 
                 
               </div>
@@ -119,15 +129,18 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           theme === "light" && "bg-white"
         } dark:text-white top-0 z-10 tablet:flex`}
       >
+      {mounted && theme && data.darkMode && (
+              <Button
+                
+              >
+                <img
+                
+                  className="h-6"
+                  src={`/images/${theme === "dark" ? "white.svg" : "black.svg"}`}
+                ></img>
+              </Button>
+            )}
         
-  {mounted && (<img 
-          style={{
-            height: '30px',  // Adjust the height as needed
-            marginLeft: '10px',  // Example of adding some space to the right
-            display: 'block', 
-          }}
-          src={`/images/${theme === "light" ? "black.svg" : "white.svg"}`} alt="Logo"
-                ></img>)}
           {/* Replace with our logo*/}
           
        
@@ -146,6 +159,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
+            
             
             {mounted && theme && data.darkMode && (
               <Button
