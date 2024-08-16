@@ -7,14 +7,22 @@ import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
+    // Detect system dark mode preference
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    if (!theme) {
+      // If no theme is set yet, set it based on system preference
+      setTheme(systemPrefersDark ? "dark" : "light");
+    }
+
     setMounted(true);
-  }, []);
+  }, [theme, setTheme]);
 
   // Determine the correct logo to display based on the theme
   const logoSrc = mounted
