@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 const ServiceCard = ({ name, description }) => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Define the background color based on the theme and ensure it applies before mounted is true
+  // Set background color based on resolved theme (or assume dark mode if not mounted)
   const cardBgColor =
-    !mounted // When not mounted yet, assume dark mode as default
-      ? "bg-slate-800 text-white"
-      : theme === "dark"
+    !mounted || resolvedTheme === "dark"
       ? "bg-slate-800 hover:bg-slate-700 text-white"
       : "bg-slate-50 hover:bg-slate-100 text-black";
 

@@ -7,19 +7,30 @@ import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // Check for system preference for dark mode and set it
+    if (!theme) {
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(systemPrefersDark ? "dark" : "light");
+    }
+  }, [theme, setTheme]);
 
   // Determine the correct logo to display based on the resolved theme
   const logoSrc = mounted
     ? `/images/${resolvedTheme === "dark" ? "white.svg" : "black.svg"}`
     : `/images/black.svg`; // Default to black logo before theme is determined
+
+  // Determine the correct icon (sun or moon) to display based on the theme
+  const themeIconSrc = mounted
+    ? `/images/${resolvedTheme === "dark" ? "sun.svg" : "moon.svg"}`
+    : `/images/moon.svg`; // Default to moon icon
 
   return (
     <>
@@ -51,9 +62,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   >
                     <img
                       className="h-6"
-                      src={`/images/${
-                        resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
+                      src={themeIconSrc}
                       alt="Theme Toggle"
                     />
                   </Button>
@@ -150,9 +159,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               >
                 <img
                   className="h-6"
-                  src={`/images/${
-                    resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
-                  }`}
+                  src={`/images/${resolvedTheme === "dark" ? "sun.svg" : "moon.svg"}`}
                   alt="Theme Toggle"
                 />
               </Button>
@@ -184,9 +191,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               >
                 <img
                   className="h-6"
-                  src={`/images/${
-                    resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
-                  }`}
+                  src={`/images/${resolvedTheme === "dark" ? "sun.svg" : "moon.svg"}`}
                   alt="Theme Toggle"
                 />
               </Button>
