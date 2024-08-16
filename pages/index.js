@@ -67,7 +67,7 @@ export default function Home() {
           <div className="mt-5">
             <h1
               ref={textOne}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
+              className="text-4xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
             >
               {data.headerTaglineOne}
 
@@ -75,22 +75,19 @@ export default function Home() {
             </h1>
             <h1
               ref={textOne}
-              className="text-1xl tablet:text-3xl laptop:text-2xl laptopl:text-4xl p-1 tablet:p-1 text-bold w-4/5 mob:w-full laptop:w-4/5"
+              className="text-2xl tablet:text-3xl laptop:text-2xl laptopl:text-4xl p-1 tablet:p-1 text-bold w-4/5 mob:w-full laptop:w-4/5"
             ><br />
               {data.aboutpara}
-              <br /><br />Here&apos;s the kind of work we <b>love</b> to do.
-              
+              <br /><br />Here&apos;s some of the work we&apos;re known for:
             </h1>
-            
+      
            
           </div>
           
-          
-          <Socials className="mt-2 laptop:mt-5" />
         </div>
       
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
+      
           
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.services.map((service, index) => (
@@ -101,7 +98,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (
           <div className="fixed bottom-5 right-5">
