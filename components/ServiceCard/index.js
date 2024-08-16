@@ -9,9 +9,11 @@ const ServiceCard = ({ name, description }) => {
     setMounted(true);
   }, []);
 
-  // Ensure default theme is respected until "mounted" is true
+  // Define the background color based on the theme and ensure it applies before mounted is true
   const cardBgColor =
-    mounted && theme === "dark"
+    !mounted // When not mounted yet, assume dark mode as default
+      ? "bg-slate-800 text-white"
+      : theme === "dark"
       ? "bg-slate-800 hover:bg-slate-700 text-white"
       : "bg-slate-50 hover:bg-slate-100 text-black";
 
