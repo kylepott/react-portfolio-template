@@ -13,20 +13,18 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
-    // Detect system dark mode preference
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
+    setMounted(true);
+
+    // Check for system preference for dark mode and set it
     if (!theme) {
-      // If no theme is set yet, set it based on system preference
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setTheme(systemPrefersDark ? "dark" : "light");
     }
-
-    setMounted(true);
   }, [theme, setTheme]);
 
   // Determine the correct logo to display based on the theme
   const logoSrc = mounted
-    ? `/images/${theme === "dark" ? "white.svg" : "black.svg"}`
+    ? `/images/${resolvedTheme === "dark" ? "white.svg" : "black.svg"}`
     : `/images/black.svg`; // Default to black logo before theme is determined
 
   return (
