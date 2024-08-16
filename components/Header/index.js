@@ -7,22 +7,16 @@ import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
+  }, []);
 
-    // Check for system preference for dark mode and set it
-    if (!theme) {
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(systemPrefersDark ? "dark" : "light");
-    }
-  }, [theme, setTheme]);
-
-  // Determine the correct logo to display based on the theme
+  // Determine the correct logo to display based on the resolved theme
   const logoSrc = mounted
     ? `/images/${resolvedTheme === "dark" ? "white.svg" : "black.svg"}`
     : `/images/black.svg`; // Default to black logo before theme is determined
@@ -40,7 +34,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 {data.darkMode && (
                   <Button
                     onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
+                      setTheme(resolvedTheme === "dark" ? "light" : "dark")
                     }
                   >
                     <img className="h-6" src={logoSrc} alt="Logo" />
@@ -52,13 +46,13 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 {data.darkMode && (
                   <Button
                     onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
+                      setTheme(resolvedTheme === "dark" ? "light" : "dark")
                     }
                   >
                     <img
                       className="h-6"
                       src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
+                        resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
                       alt="Theme Toggle"
                     />
@@ -68,7 +62,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             </div>
             <Popover.Panel
               className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800" : "bg-white"
+                resolvedTheme === "dark" ? "bg-slate-800" : "bg-white"
               } shadow-md rounded-md`}
             >
               {!isBlog ? (
@@ -130,7 +124,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           padding: "10px 20px", // Add padding if necessary
         }}
       >
-        {mounted && theme && data.darkMode && (
+        {mounted && resolvedTheme && data.darkMode && (
           <img className="h-6" src={logoSrc} alt="Logo" />
         )}
 
@@ -148,13 +142,17 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            {mounted && theme && data.darkMode && (
+            {mounted && resolvedTheme && data.darkMode && (
               <Button
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() =>
+                  setTheme(resolvedTheme === "light" ? "dark" : "light")
+                }
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`/images/${
+                    resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
+                  }`}
                   alt="Theme Toggle"
                 />
               </Button>
@@ -178,13 +176,17 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               Contact
             </Button>
 
-            {mounted && theme && data.darkMode && (
+            {mounted && resolvedTheme && data.darkMode && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() =>
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`/images/${
+                    resolvedTheme === "dark" ? "moon.svg" : "sun.svg"
+                  }`}
                   alt="Theme Toggle"
                 />
               </Button>
