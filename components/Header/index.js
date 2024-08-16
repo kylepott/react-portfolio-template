@@ -25,7 +25,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   // Determine the correct logo to display based on the resolved theme
   const logoSrc = mounted
     ? `/images/${resolvedTheme === "dark" ? "white.svg" : "black.svg"}`
-    : `/images/black.svg`; // Default to black logo before theme is determined
+    : `/images/black.svg`;
 
   // Determine the correct icon (sun or moon) to display based on the theme
   const themeIconSrc = mounted
@@ -64,6 +64,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                       className="h-6"
                       src={themeIconSrc}
                       alt="Theme Toggle"
+                      style={{
+                        filter:
+                          resolvedTheme === "light"
+                            ? "invert(1) brightness(50%)" // Darken moon in light mode
+                            : "none", // No filter in dark mode (sun will be default color)
+                      }}
                     />
                   </Button>
                 )}
@@ -161,6 +167,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   className="h-6"
                   src={`/images/${resolvedTheme === "dark" ? "sun.svg" : "moon.svg"}`}
                   alt="Theme Toggle"
+                  style={{
+                    filter:
+                      resolvedTheme === "light"
+                        ? "invert(1) brightness(50%)" // Darken moon in light mode
+                        : "none", // No filter in dark mode
+                  }}
                 />
               </Button>
             )}
@@ -193,6 +205,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   className="h-6"
                   src={`/images/${resolvedTheme === "dark" ? "sun.svg" : "moon.svg"}`}
                   alt="Theme Toggle"
+                  style={{
+                    filter:
+                      resolvedTheme === "light"
+                        ? "invert(1) brightness(50%)" // Darken moon in light mode
+                        : "none", // No filter in dark mode
+                  }}
                 />
               </Button>
             )}
