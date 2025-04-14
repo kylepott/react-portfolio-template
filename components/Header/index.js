@@ -34,6 +34,9 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
 
   return (
     <>
+    <div className="w-full text-black dark:text-white text-center text-sm py-2 font-semibold top-0 z-50">
+  Want to join us? We're hiring! <a href="https://decise.io/20250402DeciseOpportunity.pdf" className="underline hover:text-red-600 dark:hover:text-yellow-300 ml-1">View opportunity →</a>
+</div>
       <Popover className="block tablet:hidden mt-5">
         {({ open }) => (
           <>
@@ -131,7 +134,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
       </Popover>
 
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky top-0 z-10 tablet:flex`}
+        className={`mt-10 hidden flex-row items-center justify-between  top-0 z-10 tablet:flex`}
         style={{
           backgroundColor: "transparent", // Transparent background
           width: "100%",
